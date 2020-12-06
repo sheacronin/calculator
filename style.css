@@ -124,8 +124,10 @@ div {
 
 #equals {
     grid-area: equals;
+    background-color: lightyellow;
 }
 
 #clear {
     grid-area: clear;
+    background-color: lightyellow;
 }
