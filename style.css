@@ -52,10 +52,30 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: box-shadow 0.5s;
 }
 
 .calc-button:hover {
     cursor: pointer;
+    box-shadow: inset 0 0 2px;
+}
+
+.pressed-button {
+    animation: insetShadow 0.5s ease-out 1;
+}
+
+@keyframes insetShadow {
+	from {
+		box-shadow: 0;
+	}
+
+	50% {
+		box-shadow: inset 0 0 5px;
+	}
+
+	to {
+		box-shadow: 0;
+	}
 }
 
 .number {

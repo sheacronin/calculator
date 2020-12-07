@@ -27,6 +27,7 @@ const operators = document.querySelectorAll('.operator');
 const screen = document.querySelector('#screen');
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
+const allCalcButtons = document.querySelectorAll('.calc-button')
 
 // Variables to store needed data.
 let a = '';
@@ -107,6 +108,14 @@ function clearCalc() {
 
     console.log(`Calc cleared.`)
 }
+
+function runBtnPressAnimation(e) {
+    e.target.classList.remove('pressed-button');
+    e.target.offsetHeight;
+    e.target.classList.add('pressed-button');
+}
+
+allCalcButtons.forEach(btn => btn.addEventListener('click', runBtnPressAnimation));
 
 nums.forEach(num => num.addEventListener('click', displayNum));
 operators.forEach(operator => operator.addEventListener('click', displayOperator));
