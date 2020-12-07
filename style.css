@@ -25,7 +25,7 @@ div {
 }
 
 #screen {
-    background-color: lightgray;
+    background-color: #f0f5ff;
     width: 350px;
     height: 50px;
     margin: 20px auto;
@@ -35,6 +35,7 @@ div {
     padding: 5px 20px;
     font-family: 'Cutive Mono', monospace;
     font-size: 40px;
+    box-shadow: inset floralwhite 0 0 10px;
 }
 
 #buttons-container {
@@ -84,11 +85,11 @@ div {
 }
 
 .number {
-    background-color: #f0f5ff;
+    background-color: #d7e4ff;
 }
 
 .operator {
-    background-color: #fdfff0;
+    background-color: #faffd7;
 }
 
 #zero {
@@ -149,12 +150,12 @@ div {
 
 #equals {
     grid-area: equals;
-    background-color: #fdfff0;
+    background-color: #faffd7;
 }
 
 #clear {
     grid-area: clear;
-    background-color: #fdfff0;
+    background-color: #faffd7;
 }
 
 footer {
