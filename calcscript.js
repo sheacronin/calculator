@@ -41,7 +41,7 @@ function displayNum(e) {
 
 function displayOperator(e) {
     if (displayingOperator) { // Check if there are already 2 nums being operated.
-
+        operate();
     }
 
     a = screen.textContent;
@@ -51,18 +51,19 @@ function displayOperator(e) {
 
     operator = e.target.id;
     displayingOperator = true;
+    displayingResult = false;
     console.log(`display operator. A: ${a}, Operator: ${operator}, B: ${b}`);
 }
 
 function operate() {
-    a = parseInt(a);
-    b = parseInt(b);
+    a = parseFloat(a);
+    b = parseFloat(b);
 
     console.log(a + ' ' + operator + ' ' + b);
 
     displayingOperator = false;
 
-    screen.textContent = window[operator](a, b);
+    screen.textContent = Math.round(window[operator](a, b) * 100) / 100;
     displayingResult = true;
 
     a = '';
