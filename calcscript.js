@@ -111,7 +111,7 @@ function clearCalc() {
 
 function runBtnPressAnimation(e) {
     e.target.classList.remove('pressed-button');
-    e.target.offsetHeight;
+    e.target.offsetHeight; // Triggers reflow
     e.target.classList.add('pressed-button');
 }
 
