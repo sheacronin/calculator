@@ -2,12 +2,18 @@ body {
     background-color: floralwhite;
     text-align: center;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
+    color: #181819;
+}
+
+h1 {
+    letter-spacing: 3px;
+    font-weight: 300;
 }
 
 div {
-    background-color: grey;
+    background-color: #909399;
 }
 
 #calc-body {
@@ -27,7 +33,7 @@ div {
     justify-content: flex-end;
     align-items: center;
     padding: 5px 20px;
-    font-family: monospace;
+    font-family: 'Cutive Mono', monospace;
     font-size: 40px;
 }
 
@@ -38,7 +44,6 @@ div {
     display: grid;
     grid-template-columns: 1fr  1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    /* border-radius: 10px; */
     grid-gap: 5px;
     grid-template-areas: 
     "seven eight nine divide"
@@ -79,11 +84,11 @@ div {
 }
 
 .number {
-    background-color: lightsteelblue;
+    background-color: #f0f5ff;
 }
 
 .operator {
-    background-color: lightyellow;
+    background-color: #fdfff0;
 }
 
 #zero {
@@ -144,10 +149,30 @@ div {
 
 #equals {
     grid-area: equals;
-    background-color: lightyellow;
+    background-color: #fdfff0;
 }
 
 #clear {
     grid-area: clear;
-    background-color: lightyellow;
+    background-color: #fdfff0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #e3e5d8;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+    color:#4672cc;
 }
