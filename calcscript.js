@@ -1,31 +1,41 @@
+// Functions for mathematical operations.
 function add(a, b) {
-	return a + b;
+	return Math.round((a + b) * 100) / 100;
 }
 
 function subtract(a, b) {
-	return a - b;
+	return Math.round((a - b) * 100) / 100;
 }
 
 function multiply(a, b) {
-    return a * b;
+    return Math.round((a * b) * 100) / 100;
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b === 0) {
+        console.log('divide by 0');
+        setTimeout(clearCalc, 1000);
+        return 'nope!';
+    } 
+
+    return Math.round((a / b) * 100) / 100;
 }
 
+// Vairables for HTML elements.
 const nums = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const screen = document.querySelector('#screen');
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
 
+// Variables to store needed data.
 let a = '';
 let b = '';
 let operator;
 let displayingOperator = false; // Boolean to tell if nums should be part of a or b.
 let displayingResult = false; // Booleon to check if number is result of operation.
 
+// Function to run when num button is clicked.
 function displayNum(e) {
     const clickedNum = e.target.textContent;
     if (displayingOperator) b += clickedNum;
@@ -36,15 +46,24 @@ function displayNum(e) {
     } else {
         screen.textContent += clickedNum;
     }
-    console.log(`display num. A: ${a}, Operator: ${operator}, B: ${b}`);
+    console.log(`Display Num. B = ${b}`);
 }
 
+// Function to run if operator button is clicked.
 function displayOperator(e) {
-    if (displayingOperator) { // Check if there are already 2 nums being operated.
-        operate();
+    a = screen.textContent;
+
+    // Make sure user doesn't enter two operators in a row
+    // Or an operator before an a num.
+    if ((displayingOperator && !b) | !a) { 
+        console.log('Incorrect operator placement');
+        return;
     }
 
-    a = screen.textContent;
+    if (b) { // Check if there are already 2 nums being operated.
+        operate();
+        a = screen.textContent;
+    }
 
     const clickedOperator = e.target.textContent;
     screen.textContent += clickedOperator;
@@ -52,10 +71,16 @@ function displayOperator(e) {
     operator = e.target.id;
     displayingOperator = true;
     displayingResult = false;
-    console.log(`display operator. A: ${a}, Operator: ${operator}, B: ${b}`);
+    console.log(`Display Operator. A = ${a} | Operator = ${operator}`);
 }
 
+// Function to run if equals button is clicked.
 function operate() {
+    if (!displayingOperator | a === '' | b === '') {
+        console.log('Not enough info to operate.')
+        return;
+    }
+    
     a = parseFloat(a);
     b = parseFloat(b);
 
@@ -63,23 +88,24 @@ function operate() {
 
     displayingOperator = false;
 
-    screen.textContent = Math.round(window[operator](a, b) * 100) / 100;
+    screen.textContent = window[operator](a, b);
     displayingResult = true;
 
     a = '';
     b = '';
     displayingOperator = false;
 
-    console.log(`operate. A: ${a}, Operator: ${operator}, B: ${b}`);
+    console.log(`Operated.`);
 }
 
-function clearCalc(e) {
+// Function to run if clear button is clicked.
+function clearCalc() {
     screen.textContent = '';
     a = '';
     b = '';
     displayingOperator = false;
 
-    console.log(`clear Calc. A: ${a}, Operator: ${operator}, B: ${b}`)
+    console.log(`Calc cleared.`)
 }
 
 nums.forEach(num => num.addEventListener('click', displayNum));
